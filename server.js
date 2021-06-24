@@ -4,9 +4,10 @@
 const express = require("express");
 const { Model } = require("mongoose");
 const { store, Todo } = require("./model");
-
+const cors = require("cors");
 //Instantiate your app/server
 const app = express();
+app.use(cors());
 
 //tell our app
 app.use(express.json({}));
