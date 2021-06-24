@@ -2,6 +2,8 @@
 
 const server = require("./server.js");
 const persist = require("./persist.js");
+const fs = require("fs");
+const background = require("./background");
 
 //Define a port
 const port = process.argv[2] || process.env.PORT || 3000;
@@ -14,4 +16,11 @@ persist.connect(() => {
   });
 });
 
-//testing comment
+//start our background process
+setInterval(() => {
+  background.myCountingProcess();
+}, 1000);
+
+setInterval(() => {
+  background.myCleanupProcess();
+}, 10000);
