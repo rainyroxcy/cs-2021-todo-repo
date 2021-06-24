@@ -4,7 +4,7 @@ const server = require("./server.js");
 const persist = require("./persist.js");
 
 //Define a port
-const port = process.argv[2] || 3000;
+const port = process.argv[2] || process.env.PORT || 3000;
 
 //Connect to the database
 persist.connect(() => {
