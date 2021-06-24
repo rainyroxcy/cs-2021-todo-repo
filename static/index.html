@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel = "stylesheet" href = "style.css">
+	<title>Document</title>
+</head>
+<body>
+<header>
+	<h1>To-Do App</h1>
+</header>
+
+<div id="app">
+	<div id="wrapper">
+	<h2>Create To-Do</h2>
+	<div class = "input_area">
+		<label>Name</label>
+		<input type = "text" v-model = "new_todo_name" placeholder = "Enter a new todo name">
+		<label>Description</label>
+		<input type = "text" v-model = "new_todo_description" placeholder = "Description">
+		<label> Deadline</label>
+		<input type = "date" V-model = "new_todo_deadline" placeholder = "Deadline Date">
+		<button v-on:click = "addNewTodo()">Add</button>
+	</div>
+	</div>
+	<div class = "todo">
+		<h2> Your To-Do List</h2>
+		<div class = "list">
+	<ul>
+		
+		<li v-for="(todo,index) in todos">
+			<input type = "checkbox" v-model = "todo.done" v-on:change = "markDone(todo)">
+
+			<div v-if = "todo.editing">
+				<input type = "text" v-model = "todo.name">
+				<input type = "text" v-model = "todo.description">
+				<input type ="text" v-model = "todo.deadline">
+				<button v-on:click="saveTodo(todo)">Save</button>
+			</div>
+			<div class = "mist" v-else>
+				<div> {{todo.name}} <br></div><br>
+				<div> {{todo.description}}</div>
+				<div>{{todo.deadline}}</div>
+				
+					</div>
+					<div class = "btns">
+						<button v-on:click = "editTodo(todo)">Edit</button>
+						<button v-on:click ="deleteTodo(todo._id)">Delete</button>
+				
+			</div>
+			
+			
+			
+			
+		</li>
+		
+	</ul>
+	
+	</div>
+</div>
+</div>
+<script src = "https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src = "app.js"></script>
+
+	
+</body>
+</html>
